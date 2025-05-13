@@ -1,0 +1,259 @@
+.calendar-text-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 20px;
+  width: 100%;
+  max-width: 1300px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Adjust the calendar container styling */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  max-width: 300px;
+  margin-top: 0;
+}
+/* Heading styling */
+.calendar-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Calendar custom styling */
+.custom-calendar {
+  border: none;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  background-color: #f9f9f9; /* Subtle background for the calendar */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  overflow: hidden; /* Ensure content stays inside rounded corners */
+}
+
+.custom-calendar .react-calendar__navigation {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  color: white;
+  padding: 10px;
+  border-bottom: 2px solid #388e3c; /* Add a darker shade at the bottom */
+  text-align: center;
+  font-size: 20px;
+}
+
+.custom-calendar .react-calendar__navigation button {
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-calendar .react-calendar__navigation button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: scale(1.1); /* Slight zoom effect */
+  border-radius: 8px; /* Smooth button appearance */
+}
+
+.custom-calendar .react-calendar__tile {
+  background-color: #ffffff; /* White tiles */
+  color: #333; /* Text color */
+  border-radius: 8px; /* Rounded tiles */
+  padding: 8px;
+  margin: 5px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-calendar .react-calendar__tile:enabled:hover {
+  background-color:rgb(104, 184, 224);
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.custom-calendar .react-calendar__tile--now {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  color: white;
+  font-weight: bold;
+}
+
+.custom-calendar .react-calendar__tile--now:hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.custom-calendar .react-calendar__tile--active {
+  background-color: #4caf50; /* Active tile color */
+  color: white;
+  font-weight: bold;
+}
+
+.custom-calendar .react-calendar__tile--active:enabled:hover {
+  background-color: #66bb6a; /* Lighter green on hover for active tile */
+}
+
+.custom-calendar abbr {
+  text-decoration: none; /* Remove default underline for day names */
+}
+
+.custom-calendar .react-calendar__month-view__days__day--weekend {
+  color: #e57373; /* Highlight weekends in a soft red */
+}
+
+.custom-calendar .react-calendar__tile--disabled {
+  background-color: #f0f0f0; /* Gray background for disabled dates */
+  color: #bbb;
+}
+
+/* Selected date styling */
+.selected-date {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Text container styling */
+.text-container {
+  flex: 1; /* Allow the text container to take up remaining space */
+  margin-left: 2rem; /* Space between calendar and text container */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 1300px;
+  height: 500px;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+.text-container .diary-text{
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+
+}
+
+.diary-text textarea {
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 900px;
+  height: 460px;
+  padding: 2rem; /* Adjust the inner space of the textarea */
+  box-sizing: border-box; /* Ensures padding doesn't affect the width/height */
+  overflow: auto; /* Adds scrolling when content overflows */
+}
+
+.text-container .diary-btn{
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 1rem;
+  margin-left: 50rem;
+  padding: 7px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.text-container .diary-btn:hover{
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+}
+/* Emoji container */
+.emoji-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; /* Allows precise placement */
+  right: 20px; /* Adjusts distance from the right edge */
+  top: 50%; /* Centers vertically */
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Emoji styles */
+.emoji {
+  font-size: 1.5rem; /* Adjust size of emojis */
+  margin: 8px 0; /* Space between emojis */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.emoji:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+.entries-list{
+  padding: 20px;
+  max-width: 1200px;
+  margin-top:3rem;
+  border-radius: 8px;
+  background-color: #f4f4f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 2rem;
+}
+
+.entries-list h3{
+  text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.entries-list ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.entries-list ul li {
+  margin: 10px 0;
+  padding: 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.entries-list ul li:hover {
+  background-color: #e0e0e0;
+}
+
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .calendar-container {
+    max-width: 90%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  .calendar-heading {
+    font-size: 1.25rem;
+  }
+
+  .selected-date {
+    font-size: 0.9rem;
+  }
+}

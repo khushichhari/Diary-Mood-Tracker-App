@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+    background-image: url('https://camo.envatousercontent.com/a882af2aba85a39fba1b0e8dedb48268a98b4cb4/687474703a2f2f692e696d6775722e636f6d2f354a453279584f2e676966');
+    height: 200vh;
+    display: flex;
+    justify-content: center;/* Center content vertically */
+  }
+  
+.todo {
+  margin-left: 30rem;
+    width: 600px; /* Restrict maximum width to 600px */
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(6, 41, 95, 0.425);
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't exceed the width */
+  }
+  
+  
+.todo h2 {
+    color: #4a90e2;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .create-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .create-form input {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .create-form button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-form button:hover {
+    background-color: #357ab7;
+  }
+  
+.todo > div {
+    margin-top: 20px;
+  }
+  
+  .added-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .added-task:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .task-icon1,
+  .task-icon2 {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .task-icon1:hover {
+    color: #4a90e2;
+  }
+  
+  .task-icon2:hover {
+    color: #e74c3c;
+  }
+  
+  .line-through {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  
+  
+  /* For screens 768px and below */
+  @media (max-width: 768px) {
+  .todo {
+      width: 90%;
+      margin-top: 10px;
+      padding: 20px;
+    }
+  
+    .create-form input {
+      min-width: 200px;
+      padding: 8px;
+      font-size: 0.9rem;
+    }
+  
+    .create-form button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+  
+    .added-task {
+      width: 100%;
+      padding: 8px;
+    }
+  
+    .task-icon1,
+    .task-icon2 {
+      font-size: 1.3rem;
+    }
+  
+  .todo h2 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* For screens 480px and below */
+  @media (max-width: 480px) {
+  .todo {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    .create-form input {
+      min-width: 180px;
+      padding: 6px;
+      font-size: 0.8rem;
+    }
+  
+    .create-form button {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+  
+    .added-task {
+      padding: 6px;
+    }
+  
+    .task-icon1,
+    .task-icon2 {
+      font-size: 1.2rem;
+    }
+  
+  .todo h2 {
+      font-size: 1.6rem;
+    }
+  }
+  

@@ -1,0 +1,141 @@
+/* General container styling */
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 20vh;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-width: 100vw;
+    
+  }
+  
+  .navbar-header {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly with space around them */
+    align-items: center;  /* Vertically center items */
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    
+  }
+  
+  .navbar-logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  
+  /* Navigation bar */
+  nav {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .nav-links li {
+    font-size: 16px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);  /* Gradient background */
+    background-clip: text; /* Clip the background to text */
+    color: transparent;  /* Make the text transparent so the gradient is visible */
+    transform: scale(1.05); /* Slightly scale up on hover */
+    
+  }
+  
+  
+  /* Logout Button */
+  .navbar-btn {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-btn button {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-btn button:hover {
+    color:linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+
+  
+  /* Mobile Responsive Styling */
+  @media (max-width: 768px) {
+    .navbar-header {
+      flex-direction: row; /* Stack items vertically on smaller screens */
+      gap: 20px;
+      padding: 15px;
+    }
+  
+    .navbar-logo {
+      font-size: 30px;
+    }
+  
+    .nav-links {
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .navbar-btn button {
+      font-size: 14px;
+      padding: 10px 18px;
+    }
+  }
+  
+  /* Mobile View for very small screens (phones in portrait) */
+  @media (max-width: 480px) {
+    .navbar-logo {
+      font-size: 24px;
+    }
+  
+    .nav-links {
+      gap: 10px;
+    }
+  
+    .nav-links a {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  
+    .navbar-btn button {
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+  }
+  
