@@ -1,4 +1,5 @@
-require("dotenv").config(); // Load environment variables
+// Load environment variables
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -14,23 +15,24 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
+  .connect(process.env.MONGODB_URI, {
+    // these options are not needed in Mongoose 7+, so you can remove them
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// *** Diary Functionality ***
-
-// Diary Entry Schema
+// Diary Entry Schema & Model
 const diarySchema = new mongoose.Schema({
   date: { type: String, required: true },
   emoji: { type: String, required: true },
   text: { type: String, required: true },
 });
 
-// Diary Model
 const DiaryEntry = mongoose.model("DiaryEntry", diarySchema);
 
-// Add a new diary entry
+// Routes for Diary
 app.post("/diary", async (req, res) => {
   const { date, emoji, text } = req.body;
 
@@ -40,18 +42,18 @@ app.post("/diary", async (req, res) => {
       existingEntry.emoji = emoji;
       existingEntry.text = text;
       await existingEntry.save();
-      res.status(200).json({ message: "Diary entry updated successfully!" });
-    } else {
-      const newEntry = new DiaryEntry({ date, emoji, text });
-      await newEntry.save();
-      res.status(201).json({ message: "Diary entry saved successfully!" });
+      return res.status(200).json({ message: "Diary entry updated successfully!" });
     }
+
+    const newEntry = new DiaryEntry({ date, emoji, text });
+    await newEntry.save();
+    res.status(201).json({ message: "Diary entry saved successfully!" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Failed to save diary entry." });
   }
 });
 
-// Get all diary entries
 app.get("/diary", async (req, res) => {
   try {
     const entries = await DiaryEntry.find();
@@ -61,87 +63,71 @@ app.get("/diary", async (req, res) => {
   }
 });
 
-// Get diary entries by date
 app.get("/diary/:date", async (req, res) => {
-  const { date } = req.params;
-
   try {
-    const entries = await DiaryEntry.find({ date });
-    res.status(200).json(entries);
+    const entry = await DiaryEntry.find({ date: req.params.date });
+    res.status(200).json(entry);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch diary entries for the date." });
+    res.status(500).json({ error: "Failed to fetch diary entry." });
   }
 });
 
-// *** Todo Functionality ***
-
+// Todo Schema & Model
 const todoSchema = new mongoose.Schema({
   task: { type: String, required: true },
   done: { type: Boolean, default: false },
 });
 
-const TodoModel = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
-// Add a new todo
+// Routes for Todo
 app.post("/add", async (req, res) => {
   const { task } = req.body;
 
-  if (!task) {
-    return res.status(400).json({ error: "Task is required" });
-  }
+  if (!task) return res.status(400).json({ error: "Task is required" });
 
   try {
-    const newTodo = await TodoModel.create({ task });
-    res.status(201).json(newTodo);
+    const todo = new Todo({ task });
+    await todo.save();
+    res.status(201).json(todo);
   } catch (err) {
     res.status(500).json({ error: "Error creating todo", details: err });
   }
 });
 
-// Get all todos
 app.get("/get", async (req, res) => {
   try {
-    const todos = await TodoModel.find();
+    const todos = await Todo.find();
     res.status(200).json(todos);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch todos." });
   }
 });
 
-// Update todo status
 app.put("/update/:id", async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const updatedTodo = await TodoModel.findByIdAndUpdate(
-      id,
-      { done: true },
-      { new: true }
-    );
-    res.status(200).json(updatedTodo);
+    const updated = await Todo.findByIdAndUpdate(req.params.id, { done: true }, { new: true });
+    res.status(200).json(updated);
   } catch (err) {
     res.status(500).json({ error: "Error updating todo." });
   }
 });
 
-// Delete todo
 app.delete("/delete/:id", async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const deletedTodo = await TodoModel.findByIdAndDelete(id);
-    res.status(200).json(deletedTodo);
+    const deleted = await Todo.findByIdAndDelete(req.params.id);
+    res.status(200).json(deleted);
   } catch (err) {
     res.status(500).json({ error: "Error deleting todo." });
   }
 });
 
-// Default Route
+// Default route
 app.get("/", (req, res) => {
-  res.send("Server is running. Use /diary for diary and /get or /add for todos.");
+  res.send("✅ Server is running. Use /diary for diary and /get or /add for todos.");
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
