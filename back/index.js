@@ -1,11 +1,12 @@
-// dairy and todo
+require("dotenv").config(); // Load environment variables
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
 // Initialize app
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose
-  .connect("mongodb://localhost:27017/moodDiaryTodo", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -24,7 +25,7 @@ mongoose
 
 // Diary Entry Schema
 const diarySchema = new mongoose.Schema({
-  date: { type: String, required: true }, // Store date as string for simplicity
+  date: { type: String, required: true },
   emoji: { type: String, required: true },
   text: { type: String, required: true },
 });
@@ -39,13 +40,11 @@ app.post("/diary", async (req, res) => {
   try {
     const existingEntry = await DiaryEntry.findOne({ date });
     if (existingEntry) {
-      // Update existing entry
       existingEntry.emoji = emoji;
       existingEntry.text = text;
       await existingEntry.save();
       res.status(200).json({ message: "Diary entry updated successfully!" });
     } else {
-      // Create new entry
       const newEntry = new DiaryEntry({ date, emoji, text });
       await newEntry.save();
       res.status(201).json({ message: "Diary entry saved successfully!" });
@@ -79,13 +78,11 @@ app.get("/diary/:date", async (req, res) => {
 
 // *** Todo Functionality ***
 
-// Todo Schema
 const todoSchema = new mongoose.Schema({
   task: { type: String, required: true },
   done: { type: Boolean, default: false },
 });
 
-// Todo Model
 const TodoModel = mongoose.model("Todo", todoSchema);
 
 // Add a new todo
@@ -114,7 +111,7 @@ app.get("/get", async (req, res) => {
   }
 });
 
-// Update todo status to 'done'
+// Update todo status
 app.put("/update/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -151,6 +148,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-
-
-
