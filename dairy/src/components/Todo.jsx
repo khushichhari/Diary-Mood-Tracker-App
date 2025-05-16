@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton'; // For clickable delete icon
 import Navbar from './Navbar.jsx';
 import './styles/Navbar.css';
 
-const API_BASE_URL = 'http://localhost:5000'; // API base URL for consistency
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // API base URL for consistency
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
