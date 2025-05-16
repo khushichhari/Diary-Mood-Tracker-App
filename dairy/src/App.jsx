@@ -4,7 +4,9 @@ import Home from "./components/Home.jsx";
 import Mood from "./components/Mood.jsx";
 import MoodRelaxingActivities from "./components/MoodRelaxingActivities.jsx";
 import Todo from './components/Todo.jsx'
+
 function App() {
+  
   return (
     <Router>
       <Routes>
@@ -17,4 +19,5 @@ function App() {
     </Router>
   );
 }
-export default App;
+
+export default App
