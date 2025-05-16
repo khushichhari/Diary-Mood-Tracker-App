@@ -142,11 +142,12 @@ const CalendarComponent = () => {
         <div className="entries-list">
           <h3>Past Diary Entries</h3>
           <ul>
-            {entries.map((entry) =
+            {entries.map((entry) => (
               <li key={entry._id}>
                 {entry.date}: {entry.emoji} - {entry.text}
               </li>
             ))}
+
           </ul>
         </div>
       )}
