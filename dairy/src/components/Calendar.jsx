@@ -160,8 +160,6 @@
 
 
 // new
-
-
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "./styles/Calendar.css"; // Import your custom styles
@@ -309,7 +307,7 @@ const CalendarComponent = () => {
         <div className="entries-list">
           <h3>Past Diary Entries</h3>
           <ul>
-            {entries.map((entry) => (
+            {entries.map((entry) =
               <li key={entry._id}>
                 {entry.date}: {entry.emoji} - {entry.text}
               </li>
