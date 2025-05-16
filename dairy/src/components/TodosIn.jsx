@@ -5,7 +5,7 @@ import axios from 'axios';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Add this line
 
 export default function TodosIn({ onAddTask }) {
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState( ' ' );
 
   const handleAdd = () => {
     if (task.trim() === '') {
