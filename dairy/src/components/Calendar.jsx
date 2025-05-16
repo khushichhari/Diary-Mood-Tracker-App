@@ -7,20 +7,17 @@ const CalendarComponent = () => {
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [diaryText, setDiaryText] = useState("");
   const [entries, setEntries] = useState([]);
-
+  
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   // Handle date change
   const onChange = (newDate) => {
     setDate(newDate);
     fetchDiaryEntry(newDate);
   };
-
   // Handle emoji selection
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
   };
-
   // Handle text input
   const handleTextChange = (e) => {
     setDiaryText(e.target.value);
