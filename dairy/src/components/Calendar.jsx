@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "./styles/Calendar.css";
 
 const CalendarComponent = () => {
+  
   const [date, setDate] = useState(new Date());
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [diaryText, setDiaryText] = useState("");
@@ -76,7 +77,6 @@ const CalendarComponent = () => {
       console.error(error);
     }
   };
-
   // Fetch all diary entries
   const fetchAllEntries = async () => {
     try {
@@ -95,7 +95,7 @@ const CalendarComponent = () => {
   // Fetch all entries on component mount
   useEffect(() => {
     fetchAllEntries();
-  }, []);
+  }, [ ]);
 
   return (
     <>
